@@ -5,7 +5,7 @@ on:
     - cron: "0 */12 * * *" # 每12小时运行一次
   workflow_dispatch:
   push:
-    branches: [ "master" ]
+    branches: [ "main", "master" ]
 
 jobs:
   generate:
@@ -15,7 +15,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      
+
+      # 创建 dist 目录
+      - name: Create dist directory
+        run: mkdir -p dist
+
       - name: Generate Snake Animation
         uses: Platane/snk@master
         with:
@@ -23,11 +27,18 @@ jobs:
           outputs: |
             dist/github-contribution-grid-snake.svg
             dist/github-contribution-grid-snake-dark.svg?palette=github-dark
-            
+
+      # 确保文件存在后再提交
       - name: Push to GitHub
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add dist/
-          git commit -m "Generate Snake Animation" || exit 0
-          git push
+          cd dist
+          if [ -f "github-contribution-grid-snake.svg" ] && [ -f "github-contribution-grid-snake-dark.svg" ]; then
+            git config --local user.email "github-actions[bot]@users.noreply.github.com"
+            git config --local user.name "github-actions[bot]"
+            git add .
+            git commit -m "Generate Snake Animation"
+            git push
+          else
+            echo "Snake animation files were not generated"
+            exit 1
+          fi
