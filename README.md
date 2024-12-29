@@ -14,8 +14,9 @@ hui&show_icons=true&theme=radical&include_all_commits=true&count_private=true)
 
 
 ## 🐍 Contributions
-![github contribution grid snake animation](https://raw.githubusercontent.com/lhui/lhui/output/github-contribution-grid-snake-dark.svg#gh-dark-mode-only)
-![github contribution grid snake animation](https://raw.githubusercontent.com/lhui/lhui/output/github-contribution-grid-snake.svg#gh-light-mode-only)
+![Snake animation](https://raw.githubusercontent.com/lhui/lhui/main/dist/github-contribution-grid-snake.svg)  
+![Snake animation](https://raw.githubusercontent.com/lhui/lhui/main/dist/github-contribution-grid-snake-dark.svg#gh-dark-mode-only)
+
 
 ## 🔗 Connect with me
 [![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?logo=Twitter&logoColor=white)](https://twitter.com/tcpgnl)
