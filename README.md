@@ -9,7 +9,8 @@
 [![trophy](https://github-profile-trophy.vercel.app/?username=lhui&theme=radical&row=1)](https://github.com/ryo-ma/github-profile-trophy)
 
 ## 📊 GitHub Stats
-![Stats](https://github-readme-stats.vercel.app/api?username=lhui&show_icons=true&theme=radical&include_all_commits=true&count_private=true)
+![Stats](https://github-readme-stats.vercel.app/api?username=l
+hui&show_icons=true&theme=radical&include_all_commits=true&count_private=true)
 
 
 ## 🐍 Contributions
