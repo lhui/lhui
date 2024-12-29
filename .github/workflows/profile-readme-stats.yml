@@ -5,7 +5,7 @@ on:
     - cron: '0 0 * * *'  # 每天 UTC 时间 0 点运行
   workflow_dispatch:      # 允许手动触发
   push:
-    branches: [ "master" ]  # 当推送到 main 分支时也触发
+    branches: [ "master" ]  # 当推送到 master 分支时触发
 
 jobs:
   update-readme:
@@ -15,58 +15,20 @@ jobs:
       contents: write
     
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@master
         with:
           fetch-depth: 0
 
       # 更新 Profile 访问计数
-      - name: Update Profile Views
-        uses: antonkomarev/github-profile-views-counter@v1
+      - name: Profile Views Counter
+        uses: antonkomarev/github-profile-views-counter@master
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           username: lhui
-          color: '0e75b6'
-          style: 'flat'
 
-      # 获取天气信息 (北京)
-      - name: Get Weather
-        uses: Jason-Zhang-weatherman/weather-action@main
-        with:
-          city: Beijing
-          
-      # 获取每日一句名言
-      - name: Daily Quote
-        uses: siddharth2016/quote-readme@main
-        
-      # 生成开发时间统计
-      - name: Code Time Stats
-        uses: athul/waka-readme@master
-        with:
-          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
-          SHOW_TITLE: true
-          BLOCKS: ░▒▓█
-          TIME_RANGE: last_30_days
-          SHOW_TIME: true
-          SHOW_MASKED_TIME: true
-
-      # 获取 Latest Blog Posts
-      - name: Latest Medium Blog Posts
-        uses: gautamkrishnar/blog-post-workflow@master
-        with:
-          feed_list: "https://medium.com/feed/@real_lihui"
-          max_post_count: 5
-          
-      # YouTube 视频更新
-      - name: Latest YouTube Videos
-        uses: gautamkrishnar/blog-post-workflow@master
-        with:
-          comment_tag_name: "YOUTUBE"
-          feed_list: "https://www.youtube.com/feeds/videos.xml?channel_id=YOUR_CHANNEL_ID"
-          max_post_count: 3
-          
       # 生成 Metrics
       - name: Generate Metrics
-        uses: lowlighter/metrics@latest
+        uses: lowlighter/metrics@master
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           user: lhui
@@ -92,34 +54,33 @@ jobs:
           plugin_habits_from: 200
           plugin_stars: yes
           plugin_stars_limit: 4
-          plugin_isocalendar: yes       # 添加日历热图
+          plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
-          plugin_topics: yes            # 添加热门话题
+          plugin_topics: yes
           plugin_topics_limit: 15
           plugin_topics_mode: icons
-          plugin_people: yes            # 添加关注者分析
+          plugin_people: yes
           plugin_people_limit: 28
           plugin_people_size: 28
           plugin_people_types: followers, following
-          plugin_notable: yes           # 添加显著贡献
-          plugin_discussions: yes       # 添加讨论参与度
-          plugin_support: yes           # 添加支持徽章
+          plugin_notable: yes
+          plugin_discussions: yes
+          plugin_support: yes
 
       # 生成 GitHub 统计信息
-      - name: GitHub Stats
+      - name: GitHub Stats Card
         uses: anuraghazra/github-readme-stats@master
         with:
           username: lhui
           show_icons: true
           count_private: true
           theme: radical
-          line_height: 27
           hide_border: true
           cache_seconds: 1800
           include_all_commits: true
           
       # 生成编程语言统计
-      - name: Top Languages
+      - name: Top Languages Card
         uses: anuraghazra/github-readme-stats@master
         with:
           username: lhui
@@ -129,8 +90,8 @@ jobs:
           langs_count: 10
           
       # 生成贡献统计
-      - name: Generate Streak Stats
-        uses: DenverCoder1/github-readme-streak-stats@v1
+      - name: GitHub Streak Stats
+        uses: DenverCoder1/github-readme-streak-stats@master
         with:
           user: lhui
           theme: radical
@@ -146,50 +107,27 @@ jobs:
             dist/github-contribution-grid-snake-dark.svg?palette=github-dark
             dist/ocean.gif?color_snake=orange&color_dots=#bfd6f6,#8dbdff,#64a1f4,#4b91f1,#3c7dd9
             
-      # 生成 activity-graph
+      # 生成 Activity Graph
       - name: Activity Graph
-        uses: Ashutosh00710/github-readme-activity-graph@v1.6.0
+        uses: Ashutosh00710/github-readme-activity-graph@master
         with:
           username: lhui
           theme: react
           area: true
           hide_border: true
           
-      # 生成 WakaTime 统计
-      # - name: WakaTime Stats
-      #   uses: anmol098/waka-readme-stats@master
-      #   with:
-      #     WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
-      #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #     SHOW_LINES_OF_CODE: "True"
-      #     SHOW_PROFILE_VIEWS: "False"
-      #     SHOW_DAYS_OF_WEEK: "True"
-      #     SHOW_SHORT_INFO: "True"
-      #     SHOW_LOC_CHART: "True"
-      #     SHOW_PROJECTS: "True"
-      #     SHOW_OS: "True"
-      #     SHOW_TIMEZONE: "True"
-          
-      # 生成 trophy（GitHub 奖杯）
+      # 生成 GitHub Trophy
       - name: GitHub Trophy
-        uses: ryo-ma/github-profile-trophy-action@v1
+        uses: ryo-ma/github-profile-trophy@master
         with:
           username: lhui
           theme: radical
           
-      # 生成技能树
-      - name: Generate Skill Icons
-        uses: skills-icons/skills-icons@v1
-        with:
-          skills: |
-            java,go,rust,javascript,typescript,react,docker,kubernetes,
-            git,mysql,postgresql,nginx,linux,spring,nextjs,tailwindcss
-            
       # 提交更改
       - name: Commit and Push
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add -A .
-          git commit -m "docs(readme): 自动更新 profile 统计信息 $(date +'%Y-%m-%d')" || exit 0
+          git commit -m "docs(readme): 更新 Profile 统计信息 $(date +'%Y-%m-%d')" || exit 0
           git push
