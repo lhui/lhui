@@ -89,14 +89,6 @@ jobs:
           hide_border: true
           langs_count: 10
           
-      # 生成贡献统计
-      - name: GitHub Streak Stats
-        uses: DenverCoder1/github-readme-streak-stats@master
-        with:
-          user: lhui
-          theme: radical
-          hide_border: true
-          
       # 生成贡献图表动画
       - name: Generate Snake Animation
         uses: Platane/snk@master
@@ -107,15 +99,6 @@ jobs:
             dist/github-contribution-grid-snake-dark.svg?palette=github-dark
             dist/ocean.gif?color_snake=orange&color_dots=#bfd6f6,#8dbdff,#64a1f4,#4b91f1,#3c7dd9
             
-      # 生成 Activity Graph
-      - name: Activity Graph
-        uses: Ashutosh00710/github-readme-activity-graph@master
-        with:
-          username: lhui
-          theme: react
-          area: true
-          hide_border: true
-          
       # 生成 GitHub Trophy
       - name: GitHub Trophy
         uses: ryo-ma/github-profile-trophy@master
