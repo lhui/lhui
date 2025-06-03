@@ -13,7 +13,7 @@
 
 
 ## 🔗 Connect with me
-[![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?logo=Twitter&logoColor=white)](https://twitter.com/tcpgnl)
+[![X](https://img.shields.io/badge/Twitter-%231DA1F2.svg?logo=Twitter&logoColor=white)](https://X.com/tcpgnl)
 [![Medium](https://img.shields.io/badge/Medium-12100E?logo=medium&logoColor=white)](https://medium.com/@real_lihui)
 [![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?logo=YouTube&logoColor=white)](https://www.youtube.com/c/leanlearnlab)
 
@@ -35,4 +35,4 @@
 
 ## ☕ Support
 [![BuyMeACoffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/lihui)
-![GitHub Sponsor](https://img.shields.io/github/sponsors/lhui?label=Sponsor&logo=GitHub&style=for-the-badge)
+[![GitHub Sponsor](https://img.shields.io/github/sponsors/lhui?label=Sponsor&logo=GitHub&style=for-the-badge)](https://github.com/sponsors/lhui)
